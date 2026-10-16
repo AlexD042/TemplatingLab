@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <string>
+#include <list>
 
+// DECLARATIONS
 template<typename T>
 std::vector<T> vec_fill(T element);
 
@@ -15,11 +18,14 @@ void test_vec_fill();
 void test_order();
 void test_search();
 
+// MAIN
 int main() {
 	test_vec_fill();
 	test_order();
 	test_search();
 }
+
+// DEFINITIONS
 
 template<typename T>
 std::vector<T> vec_fill(T element) {
@@ -52,29 +58,29 @@ void order(T& a, T& b, T& c) {
 
 template<typename T>
 T search(T begin, T end, int element) {
-	for (T iter = begin; iter != end; ++iter) {
-		if (*iter == element) {
-			return iter;
+	for (T elementIterator = begin; elementIterator != end; ++elementIterator) {
+		if (*elementIterator == element) {
+			return elementIterator;
 		}
 	}
 	return end;
 }
 
 void test_vec_fill() {
-	std::vector<int> v_int = vec_fill<int>(5);
-	assert(v_int.size() == 10);
-	assert(v_int[0] == 5);
-	assert(v_int[9] == 14);
+	std::vector<int> vectorInt = vec_fill<int>(5);
+	assert(vectorInt.size() == 10);
+	assert(vectorInt[0] == 5);
+	assert(vectorInt[9] == 14);
 
-	std::vector<double> v_double = vec_fill<double>(1.5);
-	assert(v_double.size() == 10);
-	assert(v_double[0] == 1.5);
-	assert(v_double[9] == 10.5);
+	std::vector<double> vectorDouble = vec_fill<double>(1.5);
+	assert(vectorDouble.size() == 10);
+	assert(vectorDouble[0] == 1.5);
+	assert(vectorDouble[9] == 10.5);
 
-	std::vector<char> v_char = vec_fill<char>('a');
-	assert(v_char.size() == 10);
-	assert(v_char[0] == 'a');
-	assert(v_char[9] == 'j');
+	std::vector<char> vectorChar = vec_fill<char>('a');
+	assert(vectorChar.size() == 10);
+	assert(vectorChar[0] == 'a');
+	assert(vectorChar[9] == 'j');
 
 	std::cout << "test_vec_fill PASSED\n";
 }
@@ -102,11 +108,25 @@ void test_order() {
 }
 
 void test_search() {
-	std::vector<int> vec = { 10, 20, 30, 40, 50 };
-	auto vec_it = search(vec.begin(), vec.end(), 30);
-	assert(vec_it != vec.end());
-	assert(*vec_it == 30);
-	assert(search(vec.begin(), vec.end(), 99) == vec.end());
+	std::vector<int> vector = { 10, 20, 30, 40, 50 };
+	auto vectorIterator = search(vector.begin(), vector.end(), 30);
+	assert(vectorIterator != vector.end());
+	assert(*vectorIterator == 30);
+	assert(search(vector.begin(), vector.end(), 99) == vector.end());
 
 	std::cout << "test_search PASSED\n";
+
+	std::list<int> list = { 1, 2, 3, 4, 5 };
+	auto listIterator = search(list.begin(), list.end(), 4);
+	assert(listIterator != list.end());
+	assert(*listIterator == 4);
+	assert(search(list.begin(), list.end(), 99) == list.end());
+
+	int array[4] = { 100, 200, 300, 400 };
+	int* arrayBegin = array;
+	int* arrayEnd = array + 4;
+	int* arrayIterator = search(arrayBegin, arrayEnd, 200);
+	assert(arrayIterator != arrayEnd);
+	assert(*arrayIterator == 200);
+	assert(search(arrayBegin, arrayEnd, 999) == arrayEnd);
 }
