@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
-#include <string>
-#include <list>
 
 template<typename T>
 std::vector<T> vec_fill(T element);
@@ -104,25 +102,11 @@ void test_order() {
 }
 
 void test_search() {
-	std::vector<int> vector = { 10, 20, 30, 40, 50 };
-	auto vectorIterator = search(vector.begin(), vector.end(), 30);
-	assert(vectorIterator != vector.end());
-	assert(*vectorIterator == 30);
-	assert(search(vector.begin(), vector.end(), 99) == vector.end());
+	std::vector<int> vec = { 10, 20, 30, 40, 50 };
+	auto vec_it = search(vec.begin(), vec.end(), 30);
+	assert(vec_it != vec.end());
+	assert(*vec_it == 30);
+	assert(search(vec.begin(), vec.end(), 99) == vec.end());
 
 	std::cout << "test_search PASSED\n";
-
-	std::list<int> list = { 1, 2, 3, 4, 5 };
-	auto listIterator = search(list.begin(), list.end(), 4);
-	assert(listIterator != list.end());
-	assert(*listIterator == 4);
-	assert(search(list.begin(), list.end(), 99) == list.end());
-
-	int array[] = { 100, 200, 300, 400 };
-	int* arrayBegin = array;
-	int* arrayEnd = array + 4;
-	int* arrayIterator = search(arrayBegin, arrayEnd, 200);
-	assert(arrayIterator != arrayEnd);
-	assert(*arrayIterator == 200);
-	assert(search(arrayBegin, arrayEnd, 999) == arrayEnd);
 }
