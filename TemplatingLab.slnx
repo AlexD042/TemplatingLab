@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="TemplatingLab/TemplatingLab.vcxproj" />
+  <Project Path="TemplatingLab/TemplatingLab.vcxproj" Id="127fcea3-e3fe-44a2-a6ef-ce264dde659a" />
 </Solution>
